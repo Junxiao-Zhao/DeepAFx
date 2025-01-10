@@ -17,13 +17,14 @@ RUN apt-get update && \
     apt-get install -y libsm6 libxext6 libfontconfig1 libxrender1 libglib2.0-0 supervisor python-dev swig ssh libcap2-bin nano && \
     mkdir -p /opt/aws && \
     cd /opt/aws && \
-    wget https://s3.amazonaws.com/aws-cli/awscli-bundle.zip && \
+    wget "https://s3.amazonaws.com/aws-cli/awscli-bundle-1.19.0.zip" -O "awscli-bundle.zip" && \
     unzip awscli-bundle.zip && \
     python3 awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws && \
     rm -rf awscli-bundle.zip awscli-bundle && \
+    pip install --upgrade pip setuptools wheel && \
     pip install -U flake8 && \
     pip install -U jsonschema && \
-    pip install opencv-python && \
+    pip install opencv-python==4.4.0.42 && \
     pip install -U flask && \
     pip install -U gunicorn && \
     pip install -U gevent && \
